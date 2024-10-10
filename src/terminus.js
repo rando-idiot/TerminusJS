@@ -1,5 +1,4 @@
-
-//V18 
+//V18
 //Coordinates
 //Item system
 
@@ -26,14 +25,14 @@ function credits() {
         "Developer: @rando.idiot on discord.",
         "Major contributor: @.bleb1k on discord.",
         "Check us out!",
-    ].forEach(console.log);
+    ].forEach((str) => console.log(str));
 }
 
 function discord() {
     [
         "You can find me and other people who either hate this game or enjoy it here:",
         "Discord.gg/kYyEQ2hjPs",
-    ].forEach(console.log);
+    ].forEach((str) => console.log(str));
 }
 
 const DEBUG_MODE = false;
@@ -81,55 +80,51 @@ let itemkey = {
     totalitems: 3,
     itemid0: {
         name: "N/A",
-        description: "This is not an item"
+        description: "This is not an item",
     },
     itemid1: {
         name: "Battery",
-        description: "Refills battery"
+        description: "Refills battery",
     },
     itemid2: {
         name: "Get Rich Quick!",
-        description: "Gain 2 updates worth of points"
+        description: "Gain 2 updates worth of points",
     },
     itemid3: {
         name: "MultBox",
-        description: "Gain *2 points per update() for 3 updates()"
-    }
-
-}
+        description: "Gain *2 points per update() for 3 updates()",
+    },
+};
 let itemposition = {
     itemx: randomnumbah(-100, 100),
     itemy: randomnumbah(-100, 100),
     itemz: randomnumbah(-100, 100),
     itemtype: randomnumbah(1, itemkey.totalitems),
-}
-function randomnumbah(min, max) { 
+};
+function randomnumbah(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+}
 function useheld() {
     if (itemkey.helditem === 0) {
         console.log("You aren't holding anything.");
-    }
-    else if (itemkey.helditem === 1) {
+    } else if (itemkey.helditem === 1) {
         console.log("Used ", itemkey.itemid1.name);
         game.power = game.maxbattery;
-    }
-    else if (itemkey.helditem === 2) {
+    } else if (itemkey.helditem === 2) {
         console.log("Used ", itemkey.itemid2.name);
         pointcalc();
-    }
-    else if (itemkey.helditem === 3) {
+    } else if (itemkey.helditem === 3) {
         console.log("Used ", itemkey.itemid3.name);
-        game.itemduration = 3
-        game.itemmult = 2
+        game.itemduration = 3;
+        game.itemmult = 2;
     }
-} 
-function roam() {   //I realize now this is probably the longest function in the program. lol. (also this is probably excruciatingly hard to read and inefficient so im sorry if you're reading this (yes ))
+}
+function roam() { //I realize now this is probably the longest function in the program. lol. (also this is probably excruciatingly hard to read and inefficient so im sorry if you're reading this (yes ))
     xroam = randomnumbah(1, 3);
     yroam = randomnumbah(1, 3);
     zroam = randomnumbah(1, 3);
 
-    //roam function on the x axis. 
+    //roam function on the x axis.
     if (xroam == 1) {
         playerpositiondata.playerx = playerpositiondata.playerx - 1;
         if (playerpositiondata.playerx === -100) {
@@ -139,106 +134,112 @@ function roam() {   //I realize now this is probably the longest function in the
             return "Wall hit.";
         }
     }
-        if (xroam == 2) {
-            playerpositiondata.playerx = playerpositiondata.playerx - 0;
-            if (playerpositiondata.playerx === -100) {
-                return "Wall hit.";
-            }
-            if (playerpositiondata.playerx === 100) {
-                return "Wall hit.";
-            }
+    if (xroam == 2) {
+        playerpositiondata.playerx = playerpositiondata.playerx - 0;
+        if (playerpositiondata.playerx === -100) {
+            return "Wall hit.";
         }
-        if (xroam == 3) {
-            playerpositiondata.playerx = playerpositiondata.playerx + 1;
-            if (playerpositiondata.playerx === -100) {
-                return "Wall hit.";
-            }
-            if (playerpositiondata.playerx === 100) {
-                return "Wall hit.";
-            }
+        if (playerpositiondata.playerx === 100) {
+            return "Wall hit.";
         }
-
-        //roam function on the y axis
-        if (yroam == 1) {
-            playerpositiondata.playery = playerpositiondata.playery - 1;
-            if (playerpositiondata.playery === -100) {
-                return "Wall hit.";
-            }
-            if (playerpositiondata.playery === 100) {
-                return "Wall hit.";
-            }
-        }
-            if (yroam == 2) {
-                playerpositiondata.playery = playerpositiondata.playery - 0;
-                if (playerpositiondata.playery === -100) {
-                    return "Wall hit.";
-                }
-                if (playerpositiondata.playery === 100) {
-                    return "Wall hit.";
-                }
-            }
-            if (yroam == 3) {
-                playerpositiondata.playery = playerpositiondata.playery - -1;
-                if (playerpositiondata.playery === -100) {
-                    return "Wall hit.";
-                }
-                if (playerpositiondata.playery === 100) {
-                    return "Wall hit.";
-                }
-            }
-            //roam function on the z axis
-            if (zroam == 1) {
-                playerpositiondata.playerz = playerpositiondata.playerz - 1;
-                if (playerpositiondata.playerz === -100) {
-                    return "Wall hit.";
-                }
-                if (playerpositiondata.playerz === 100) {
-                    return "Wall hit.";
-                }
-            }
-                if (zroam == 2) {
-                    playerpositiondata.playerz = playerpositiondata.playerz - 0;
-                    if (playerpositiondata.playerz === -100) {
-                        return "Wall hit.";
-                    }
-                    if (playerpositiondata.playerz === 100) {
-                        return "Wall hit.";
-                    }
-                }
-                if (yroam == 3) {
-                    playerpositiondata.playerz = playerpositiondata.playerz - -1;
-                    if (playerpositiondata.playerz === -100) {
-                        return "Wall hit.";
-                    }
-                    if (playerpositiondata.playerz === 100) {
-                        return "Wall hit.";
-                    }
-                }
-
-        if (itemposition.itemx === playerpositiondata.playerx) {
-            if (itemposition.itemy === playerpositiondata.playery) {
-                if (itemposition.itemz === playerpositiondata.playerz) {
-                    itemkey.helditem = itemposition.itemtype
-                    if (itemkey.helditem === 1) {
-                        console.log("You got:");
-                        console.log(itemkey.itemid1.name);
-                        console.log(itemkey.itemid1.description);
-                    }
-                    else if (itemkey.helditem === 2) {
-                        console.log("You got:");
-                        console.log(itemkey.itemid2.name);
-                        console.log(itemkey.itemid2.description);
-                    }
-                    else if (itemkey.helditem === 3) {
-                        console.log("You got:");
-                        console.log(itemkey.itemid3.name);
-                        console.log(itemkey.itemid3.description);
-                    }
-                }
-            }
-        }
-        console.log("Current pos:", "X:", playerpositiondata.playerx, " Y:", playerpositiondata.playery, " Z:", playerpositiondata.playerz);
     }
+    if (xroam == 3) {
+        playerpositiondata.playerx = playerpositiondata.playerx + 1;
+        if (playerpositiondata.playerx === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playerx === 100) {
+            return "Wall hit.";
+        }
+    }
+
+    //roam function on the y axis
+    if (yroam == 1) {
+        playerpositiondata.playery = playerpositiondata.playery - 1;
+        if (playerpositiondata.playery === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playery === 100) {
+            return "Wall hit.";
+        }
+    }
+    if (yroam == 2) {
+        playerpositiondata.playery = playerpositiondata.playery - 0;
+        if (playerpositiondata.playery === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playery === 100) {
+            return "Wall hit.";
+        }
+    }
+    if (yroam == 3) {
+        playerpositiondata.playery = playerpositiondata.playery - -1;
+        if (playerpositiondata.playery === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playery === 100) {
+            return "Wall hit.";
+        }
+    }
+    //roam function on the z axis
+    if (zroam == 1) {
+        playerpositiondata.playerz = playerpositiondata.playerz - 1;
+        if (playerpositiondata.playerz === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playerz === 100) {
+            return "Wall hit.";
+        }
+    }
+    if (zroam == 2) {
+        playerpositiondata.playerz = playerpositiondata.playerz - 0;
+        if (playerpositiondata.playerz === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playerz === 100) {
+            return "Wall hit.";
+        }
+    }
+    if (yroam == 3) {
+        playerpositiondata.playerz = playerpositiondata.playerz - -1;
+        if (playerpositiondata.playerz === -100) {
+            return "Wall hit.";
+        }
+        if (playerpositiondata.playerz === 100) {
+            return "Wall hit.";
+        }
+    }
+
+    if (itemposition.itemx === playerpositiondata.playerx) {
+        if (itemposition.itemy === playerpositiondata.playery) {
+            if (itemposition.itemz === playerpositiondata.playerz) {
+                itemkey.helditem = itemposition.itemtype;
+                if (itemkey.helditem === 1) {
+                    console.log("You got:");
+                    console.log(itemkey.itemid1.name);
+                    console.log(itemkey.itemid1.description);
+                } else if (itemkey.helditem === 2) {
+                    console.log("You got:");
+                    console.log(itemkey.itemid2.name);
+                    console.log(itemkey.itemid2.description);
+                } else if (itemkey.helditem === 3) {
+                    console.log("You got:");
+                    console.log(itemkey.itemid3.name);
+                    console.log(itemkey.itemid3.description);
+                }
+            }
+        }
+    }
+    console.log(
+        "Current pos:",
+        "X:",
+        playerpositiondata.playerx,
+        " Y:",
+        playerpositiondata.playery,
+        " Z:",
+        playerpositiondata.playerz,
+    );
+}
 
 function pointsset(set) {
     if (DEBUG_MODE) {
@@ -246,21 +247,18 @@ function pointsset(set) {
     } else {
         console.log("Nice try.");
     }
-    else {
-    return "Nice try.";
-    }
 }
 function pointcalc() {
     game.points = game.points +
-    (game.basegain +
-            game.steponeadd * game.steptwomult *
-                game.stepthreemult +
-            game.stepfouradd * game.powerpoints) /
-        game.difficulty;
-        if (game.itemduration > 0) {
-            game.itemduration = game.itemduration - 1;
-            game.points = game.points * game.itemmult;
-        }
+        (game.basegain +
+                game.steponeadd * game.steptwomult *
+                    game.stepthreemult +
+                game.stepfouradd * game.powerpoints) /
+            game.difficulty;
+    if (game.itemduration > 0) {
+        game.itemduration = game.itemduration - 1;
+        game.points = game.points * game.itemmult;
+    }
 }
 function help() {
     const list = [
@@ -279,7 +277,7 @@ function help() {
         list.push("infshop().............Shows infinitley purchasable items.");
     }
     if (DEBUG_MODE) list.push("pointsset(set)....Sets your points.");
-    list.forEach(console.log);
+    list.forEach((str) => console.log(str));
 }
 console.log(help());
 
@@ -304,8 +302,8 @@ function update() {
     game.powerpoints = game.power / game.antipower;
     game.power = game.power - 1;
 
-    if (game.points < 0) game.indebted = true; 
-pointcalc()
+    if (game.points < 0) game.indebted = true;
+    pointcalc();
     if (game.indebted && game.points >= 0) {
         game.indebted = 0;
         console.log("You got out of debt!");
@@ -325,7 +323,7 @@ function shop() {
         "configyml(): $100...config.yml",
         "push1(): $500........git push 1",
         "push2(): $5000.......git push 2",
-    ].forEach(console.log);
+    ].forEach((str) => console.log(str));
 }
 
 function begin() {
@@ -465,7 +463,7 @@ function infshop() {
             `maxpowerup(): $${
                 800 + game.upgpriceboost * game.difficulty
             }.......Increases the maximum battery.`,
-        ]
+        ];
 
     list = [
         `Stage ${game.infstage} upgrades`,
